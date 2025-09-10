@@ -1,23 +1,24 @@
 import React from 'react';
+import './css/ProductCard.css';
 
 const ProductCard = ({ product, onAddToCart }) => {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
+    <div className="product-card">
       <img
         src={product.image}
         alt={product.name}
-        className="w-full h-64 object-cover"
+        className="product-card-image"
       />
-      <div className="p-6">
-        <h3 className="text-2xl font-bold text-gray-800">{product.name}</h3>
-        <p className="text-gray-600 mt-2">{product.description}</p>
-        <div className="flex justify-between items-center mt-6">
-          <span className="text-3xl font-bold text-indigo-600">
+      <div className="product-card-content">
+        <h3 className="product-card-name">{product.name}</h3>
+        <p className="product-card-description">{product.description}</p>
+        <div className="product-card-actions">
+          <span className="product-card-price">
             ${product.price.toFixed(2)}
           </span>
           <button
             onClick={() => onAddToCart(product)}
-            className="bg-indigo-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-105"
+            className="add-to-cart-button"
           >
             Añadir al Carrito
           </button>
