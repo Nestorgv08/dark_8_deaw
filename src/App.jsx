@@ -9,10 +9,14 @@ import Footer from './components/Footer'; // Footer
 import ProductList from './components/ProductList'; // ProductList
 import Cart from './components/Cart'; // Cart 
 
+// Componentes Nuevos
+import Noticias from './components/Noticias'; // Noticias
+import SobreNosotros from './components/SobreNosotros'; // SobreNosotros
+
 const App = () => {
 
      // Validación de en que pagina nos encontramos: Tienda
-    const [isStorePage, setIsStorePage] = useState(false);
+    const [currentPage, setCurrentPage] = useState("home");
 
     // Estado para guardos los items en el carrito
     const [cartItems, setCartItems] = useState([]);
@@ -24,35 +28,51 @@ const App = () => {
 
     // Funcion que añade elementos al carrito
     const handleRemoveToCart = (productId) => {
-        setCartItems((prevItems) => prevItems.filter(item => item.id !== productId));
-    }
+        setCartItems((prevItems) => 
+        prevItems.filter((item) => item.id !== productId)
+        );
+    };
 
     // Validador para moverme de pagina en pagina
-    const handleNavigateToStore = () => {
-        setIsStorePage(true); // Ir a tienda
-    }
+    const handleNavigateToStore = () => setCurrentPage("Store"); // Ir a tienda   
+    const handleNavigateToHome = () =>  setCurrentPage("home"); // Ir a pagina principal
+    const handleNavigateToNoticias = () => setCurrentPage("noticias");
+    const handleNavigateToSobre = () => setCurrentPage("sobre");
 
-    const handleNavigateToHome = () => {
-        setIsStorePage(false); // Ir a pagina principal
-    }
 
     return (
         <>
-            <Header onNavigateToStore={handleNavigateToStore} onNavigateToHome={handleNavigateToHome} cartCount={cartItems.length}/>
+            <Header 
+            onNavigateToHome={handleNavigateToHome} 
+            onNavigateToStore={handleNavigateToStore}
+            onNavigateToNoticias={handleNavigateToNoticias}
+            onNavigateToSobre={handleNavigateToSobre}
+            cartCount={cartItems.length}
+            /> 
+            
             <main>
-                {isStorePage ?(
+                {currentPage === "store" ? (
                     <>
                         <ProductList onAddToCart={handleAddToCart} />
-                        <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveToCart} />
+                        <Cart 
+                        cartItems={cartItems} 
+                        onRemoveFromCart={handleRemoveToCart} 
+                        />
                     </>
+                ) : currentPage === "noticias" ? (
+                    <Noticias />
+                    ) : currentPage === "sobre" ? (
+                    <SobreNosotros />
                 ) : (
                     <>
                         <Banner/>
                         <ProductList/>
                         <ContactForm/>
+                                              
                     </>
                 )}
             </main>
+
             <Footer/>
         </>
     );

@@ -1,0 +1,25 @@
+.sobre-container {
+  padding: 40px;
+  text-align: center;
+  background: #f8f9fa;
+}
+
+.sobre-title {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.sobre-text {
+  max-width: 700px;
+  margin: 20px auto;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.sobre-img {
+  margin-top: 20px;
+  border-radius: 12px;
+  width: 70%;
+  max-width: 600px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}

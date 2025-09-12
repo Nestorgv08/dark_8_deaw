@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 // Instalar: npm install react-router-dom
-import {Link} from 'react-router-dom';
 import logo from '../img/LOGOEMPRESA.jpg';
 // Instalar: npm install @heroicons/react
 import {ShoppingCartIcon} from '@heroicons/react/24/outline';
 import './css/Header.css';
 
-const Header = ({ onNavigateToStore, onNavigateToHome, cartCount }) => {
+const Header = ({ onNavigateToStore, onNavigateToHome, onNavigateToNoticias, onNavigateToSobre, cartCount }) => {
     const [isSidebarActive, setIsSidebarActive] = useState(false);
     
     const handleToggleMenu = () => {
@@ -24,8 +23,8 @@ const Header = ({ onNavigateToStore, onNavigateToHome, cartCount }) => {
                 <ul>
                     <li><a href="#" onClick={onNavigateToHome}>Inicio</a></li>
                     <li><a href="#" onClick={onNavigateToStore}>Catálogo</a></li>
-                    <li><a href="#noticias">Noticias</a></li>
-                    <li><a href="#nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#" onClick={onNavigateToNoticias}>Noticias</a></li>
+                    <li><a href="#" onClick={onNavigateToSobre}>Sobre Nosotros</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
@@ -41,8 +40,8 @@ const Header = ({ onNavigateToStore, onNavigateToHome, cartCount }) => {
                 <ul>
                     <li><a href="#" onClick={onNavigateToHome}>Inicio</a></li>
                     <li><a href="#" onClick={onNavigateToStore}>Catálogo</a></li>
-                    <li><a href="#noticias">Noticias</a></li>
-                    <li><a href="#nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#" onClick={onNavigateToNoticias}>Noticias</a></li>
+                    <li><a href="#" onClick={onNavigateToSobre}>Sobre Nosotros</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>

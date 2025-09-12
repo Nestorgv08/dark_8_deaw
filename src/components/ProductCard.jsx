@@ -2,6 +2,9 @@ import React from 'react';
 import './css/ProductCard.css';
 
 const ProductCard = ({ product, onAddToCart }) => {
+
+    const priceDisplay = product.price ? `$${product.price.toFixed(2)}` : 'Precio no disponible';
+
   return (
     <div className="product-card">
       <img
@@ -14,7 +17,7 @@ const ProductCard = ({ product, onAddToCart }) => {
         <p className="product-card-description">{product.description}</p>
         <div className="product-card-actions">
           <span className="product-card-price">
-            ${product.price.toFixed(2)}
+            {priceDisplay}
           </span>
           <button
             onClick={() => onAddToCart(product)}
